@@ -40,13 +40,11 @@ app.use('/api/v1/courses',courseRouter)
 app.use('/api/v1/payments',paymentRouter)
 app.use('/api/v1', miscRoutes);
 
-app.use('*', (req,res) => {
-    res.sendFile(path.join(__dirname,'./client/dist/index.html'))
-})
 
-// app.use('*', (req,res) => {
-//     res.status(404).send('OPPS!! 404 page not found')
-// })
+
+app.use('*', (req,res) => {
+    res.status(404).send('OPPS!! 404 page not found')
+})
 
 app.use(ErrorMiddleWare)
 

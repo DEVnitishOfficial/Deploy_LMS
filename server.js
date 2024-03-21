@@ -15,7 +15,9 @@ export const razorpay = new Razorpay({
     key_id : process.env.RAZORPAY_KEY_ID,
     key_secret : process.env.RAZORPAY_SECRET
 })
-
+app.use('*', (req,res) => {
+    res.sendFile(path.join(__dirname,'./client/dist/index.html'))
+})
 app.listen(PORT, async () => {
     await connectToDB()
     console.log(`Server is listening at http://localhost:${PORT}`)
